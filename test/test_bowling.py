@@ -48,3 +48,8 @@ class TestBowlingGame(unittest.TestCase):
             game.add_frame(Frame(0, 0))
         with self.assertRaises(BowlingError):
             game.add_frame(Frame(1, 1))
+
+    def test_get_frame_not_exist(self):
+        game = BowlingGame()
+        with self.assertRaises(BowlingError):
+            game.get_frame_at(0)

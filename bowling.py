@@ -13,7 +13,10 @@ class BowlingGame:
         self._frames.append(frame)
 
     def get_frame_at(self, i: int) -> Frame:
-        return self._frames[i]
+        try:
+            return self._frames[i]
+        except Exception:
+            raise BowlingError("Index out of range")
 
     def calculate_score(self) -> int:
         pass
