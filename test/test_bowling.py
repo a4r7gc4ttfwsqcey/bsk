@@ -60,3 +60,10 @@ class TestBowlingGame(unittest.TestCase):
             frame = Frame(value[0], value[1])
             game.add_frame(frame)
         self.assertEqual(81, game.calculate_score())
+
+    def test_calculate_score_spare(self):
+        game = BowlingGame()
+        for value in [[1, 9]] + self._test_frames[1:]:
+            frame = Frame(value[0], value[1])
+            game.add_frame(frame)
+        self.assertEqual(88, game.calculate_score())
