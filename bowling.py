@@ -19,7 +19,10 @@ class BowlingGame:
             raise BowlingError("Index out of range")
 
     def calculate_score(self) -> int:
-        pass
+        total_score: int = 0
+        for frame in self._frames:
+            total_score += frame.score()
+        return total_score
 
     def set_first_bonus_throw(self, bonus_throw: int) -> None:
         pass

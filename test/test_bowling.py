@@ -6,6 +6,18 @@ from frame import Frame
 
 
 class TestBowlingGame(unittest.TestCase):
+    _test_frames: list[list[int]] = [
+        [1, 5],
+        [3, 6],
+        [7, 2],
+        [3, 6],
+        [4, 4],
+        [5, 3],
+        [3, 3],
+        [4, 5],
+        [8, 1],
+        [2, 6]
+    ]
 
     def test_init_game(self):
         game = BowlingGame()
@@ -24,20 +36,8 @@ class TestBowlingGame(unittest.TestCase):
         self.assertEqual(frame, game.get_frame_at(0))
 
     def test_add_get_10_frames(self):
-        frames = [
-            [1, 5],
-            [3, 6],
-            [7, 2],
-            [3, 6],
-            [4, 4],
-            [5, 3],
-            [3, 3],
-            [4, 5],
-            [8, 1],
-            [2, 6]
-        ]
         game = BowlingGame()
-        for idx, value in enumerate(frames):
+        for idx, value in enumerate(self._test_frames):
             frame = Frame(value[0], value[1])
             game.add_frame(frame)
             self.assertEqual(frame, game.get_frame_at(idx))
@@ -53,3 +53,10 @@ class TestBowlingGame(unittest.TestCase):
         game = BowlingGame()
         with self.assertRaises(BowlingError):
             game.get_frame_at(0)
+
+    def test_calculate_score(self):
+        game = BowlingGame()
+        for value in self._test_frames:
+            frame = Frame(value[0], value[1])
+            game.add_frame(frame)
+        self.assertEqual(81, game.calculate_score())
