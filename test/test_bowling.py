@@ -103,3 +103,12 @@ class TestBowlingGame(unittest.TestCase):
             game.add_frame(frame)
         game.set_first_bonus_throw(7)
         self.assertEqual(90, game.calculate_score())
+
+    def test_calculate_score_strike_as_last(self):
+        game = BowlingGame()
+        for value in [[1, 5]] + self._test_frames[1:-1] + [[10, 0]]:
+            frame = Frame(value[0], value[1])
+            game.add_frame(frame)
+        game.set_first_bonus_throw(7)
+        game.set_second_bonus_throw(2)
+        self.assertEqual(92, game.calculate_score())
