@@ -41,3 +41,10 @@ class TestBowlingGame(unittest.TestCase):
             frame = Frame(value[0], value[1])
             game.add_frame(frame)
             self.assertEqual(frame, game.get_frame_at(idx))
+
+    def test_add_frame_full(self):
+        game = BowlingGame()
+        for count in range(0, 10):
+            game.add_frame(Frame(0, 0))
+        with self.assertRaises(BowlingError):
+            game.add_frame(Frame(1, 1))
