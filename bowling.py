@@ -5,7 +5,7 @@ from frame import Frame
 class BowlingGame:
 
     def __init__(self):
-        pass
+        self._frames: list[Frame] = []
     
     def add_frame(self, frame: Frame) -> None:
         pass

@@ -7,5 +7,6 @@ from frame import Frame
 
 class TestBowlingGame(unittest.TestCase):
 
-    def test_something(self):
-        pass
+    def test_init_game(self):
+        game = BowlingGame()
+        self.assertTrue(isinstance(game._frames, list))
