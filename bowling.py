@@ -8,7 +8,7 @@ class BowlingGame:
         self._frames: list[Frame] = []
     
     def add_frame(self, frame: Frame) -> None:
-        pass
+        self._frames.append(frame)
 
     def get_frame_at(self, i: int) -> Frame:
         pass
