@@ -29,7 +29,10 @@ class BowlingGame:
                         total_score += self._bonus_throw + self._second_bonus_throw
                     else:
                         if self._frames[idx + 1].is_strike():
-                            total_score += self._frames[idx + 2].get_first_throw()
+                            if idx == len(self._frames) - 2:
+                                total_score += self._bonus_throw + self._frames[idx + 1].get_first_throw()
+                            else:
+                                total_score += self._frames[idx + 2].get_first_throw()
                         total_score += self._frames[idx + 1].get_first_throw() + self._frames[idx + 1].get_second_throw()
                 elif frame.is_spare() is True:
                     if idx != len(self._frames) - 1:

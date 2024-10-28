@@ -112,3 +112,12 @@ class TestBowlingGame(unittest.TestCase):
         game.set_first_bonus_throw(7)
         game.set_second_bonus_throw(2)
         self.assertEqual(92, game.calculate_score())
+
+    def test_calculate_score_perfect_game(self):
+        game = BowlingGame()
+        num = 10
+        while num:
+            game.add_frame(Frame(10, 0))
+            num -= 1
+        game.set_first_bonus_throw(10)
+        self.assertEqual(300, game.calculate_score())
