@@ -16,3 +16,9 @@ class TestBowlingGame(unittest.TestCase):
         game = BowlingGame()
         game.add_frame(frame)
         self.assertEqual(1, len(game._frames))
+
+    def test_get_single_frame(self):
+        frame = Frame(1, 5)
+        game = BowlingGame()
+        game.add_frame(frame)
+        self.assertEqual(frame, game.get_frame_at(0))
