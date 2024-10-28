@@ -22,10 +22,12 @@ class BowlingGame:
         total_score: int = 0
         spare: bool = False
         strike: bool = False
-        for frame in self._frames:
+        for idx, frame in enumerate(self._frames):
             if strike is True:
                 total_score += frame.get_first_throw() + frame.get_second_throw()
                 strike = False
+                if frame.is_strike():
+                    total_score += self._frames[idx + 1].get_first_throw()
             elif spare is True:
                 total_score += frame.get_first_throw()
                 spare = False
